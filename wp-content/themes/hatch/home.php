@@ -54,7 +54,7 @@ get_header(); // Loads the header.php template. ?>
 																			
 								<?php do_atomic( 'open_entry' ); // hatch_open_entry ?>
 								<?php if ( current_theme_supports( 'get-the-image' ) ) {
-									get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'archive-thumbnail', 'image_class' => 'featured', 'width' => 220, 'height' => 150, 'default_image' => get_template_directory_uri() . '/images/archive_image_placeholder.png' ) );
+									get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'medium', 'image_class' => 'featured', 'width' => 220, 'height' => 150, 'default_image' => get_template_directory_uri() . '/images/archive_image_placeholder.png' ) );
 								} ?>					
 								<?php //echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>						
 								<?php do_atomic( 'close_entry' ); // hatch_close_entry ?>							

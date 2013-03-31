@@ -747,7 +747,7 @@ input[type="submit"]:hover { cursor: pointer }
 .home .hentry, .archive .hentry {
 	float: left;
 	width: 23.40425531914894%;
-	height: 150px;
+	height: 220px;
 	margin: 0 2.127659574468085% 20px 0;
 	position: relative;
 	overflow: hidden;
@@ -1161,6 +1161,31 @@ a:hover, a:focus {
 	font-size: 0.9166666666666667em;
 	color: #aaa;
 }
+
+#footer .footer-content {
+	float:left;
+	width: 45%;
+}
+
+#footer .counters {
+	float:rigth;
+	width: 45%;
+}
+
+#footer .counters table {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+#footer .counters table td {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+
+
 #footer p { margin-bottom: 0; }
 #footer a { color: #888; }
 #footer a:hover { color: #64a2d8; }
