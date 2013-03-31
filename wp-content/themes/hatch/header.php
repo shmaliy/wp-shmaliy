@@ -18,7 +18,7 @@
     
 <!-- Mobile viewport optimized -->
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
+<meta name="google-site-verification" content="zxQd8fNzl4tO7A5cRrcaulY-4ARmGRZNPkHM9CR2oJE" />
 <?php if ( hybrid_get_setting( 'hatch_favicon_url' ) ) { ?>
 <!-- Favicon -->
 <link rel="shortcut icon" href="<?php echo esc_url( hybrid_get_setting( 'hatch_favicon_url' ) ); ?>" />
@@ -31,6 +31,12 @@
 	<?php endif;?>
 	<?php echo get_bloginfo('name');?>
 </title>
+<!-- Put this script tag to the <head> of your page -->
+<script type="text/javascript" src="//vk.com/js/api/openapi.js?87"></script>
+<script type="text/javascript" src="http://vk.com/js/api/share.js?" charset="windows-1251"></script>
+<script type="text/javascript">
+  VK.init({apiId: 2191711, onlyWidgets: true});
+</script>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 

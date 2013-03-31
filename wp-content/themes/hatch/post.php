@@ -48,11 +48,22 @@ get_header(); // Loads the header.php template. ?>
 										$img_width = '50%';
 									}
 									
+									$like_img = get_the_image( 
+									 		array( 
+									 			'meta_key' => 'Thumbnail', 
+									 			'size' => 'small', 
+									 			'link_to_post' => false, 
+									 			'image_class' => false, 
+									 			'attachment' => true 
+									 		), 
+									 		true 
+									);
+									
 
 								} ?>
 							
 							<?php if ( current_theme_supports( 'get-the-image' ) ) : ?> 
-							<a href="<?php echo  $image_info; ?>" style="float:left; display:block; width: <?php echo $img_width; ?>;">	
+							<a href="<?php echo  $image_info; ?>" style="float:left; display:block; width: <?php echo $img_width; ?>;" id = "#main-img">	
 								<?php get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'large', 'link_to_post' => false, 'image_class' => 'featured', 'attachment' => false, 'default_image' => get_template_directory_uri() . '/images/single_image_placeholder.png' ) ); ?>
 								<br />
 								Нажмите, чтобы просмотреть в полном размере
@@ -63,7 +74,7 @@ get_header(); // Loads the header.php template. ?>
 								<?php echo apply_atomic_shortcode( 'byline_date', '<div class="byline byline-date">' . __( '[entry-published before="Опубликовано: "]', 'hatch' ) . '</div>' ); ?>
 								<?php //echo apply_atomic_shortcode( 'byline_author', '<div class="byline byline-author">' . __( '[entry-author before="Автор: "]', 'hatch' ) . '</div>' ); ?>
 								<?php echo apply_atomic_shortcode( 'byline_category', '<div class="byline byline-ategory">' . __( 'Категория: [entry-terms taxonomy="category"]', 'hatch' ) . '</div>' ); ?>
-								<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">' . __( '[entry-terms taxonomy="post_tag" before="Метки: "]', 'hatch' ) . '</div>' ); ?>
+								<?php //echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">' . __( '[entry-terms taxonomy="post_tag" before="Метки: "]', 'hatch' ) . '</div>' ); ?>
 								<?php echo apply_atomic_shortcode( 'byline_edit', '<div class="byline byline-edit">' . __( '[entry-edit-link]', 'hatch' ) . '</div>' ); ?>
 								<?php get_template_part( 'loop-nav' ); // Loads the loop-nav.php template. ?>
 								<?php get_sidebar( 'after-singular' ); // Loads the sidebar-after-singular.php template. ?>
@@ -91,6 +102,7 @@ get_header(); // Loads the header.php template. ?>
 					<?php //comments_template( '/comments.php', true ); // Loads the comments.php template. ?>
 				<?php endwhile; ?>
 			<?php endif; ?>
+		
 			
 		<?php $currentCat =  $wp_query->get('category_name');?>	
 		
@@ -99,6 +111,45 @@ get_header(); // Loads the header.php template. ?>
 		</div><!-- .hfeed -->
 
 		<?php do_atomic( 'close_content' ); // hatch_close_content ?>
+		<div class="clear"></div>
+		<div class="social">
+			<div id="vk_like">
+				<script type="text/javascript">
+                    VK.Widgets.Like("vk_like", {type: "button", verb: 1, pageImage: "<?php echo $like_img; ?>"});
+                </script>
+                <br />
+            </div>
+            
+            <div class="vk_share">
+            	<!-- Put this script tag to the place, where the Share button will be -->
+				<script type="text/javascript"><!--
+				document.write(
+						VK.Share.button(
+								{
+									type: "button", 
+									text: "Сохранить",
+									url: '<?php echo 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?>', 
+									title: '<?php echo get_bloginfo('name');?>',
+									image: '<?php echo $like_img; ?>',
+									description: '',
+									noparse: false
+								}
+						)
+				);
+				--></script>	
+            </div>
+            <div class="clear"></div>
+					
+            <!-- Put this div tag to the place, where the Comments block will be -->
+            <div id="vk_comments"></div>
+           	<script type="text/javascript">
+				$(document).ready(function() {
+           		VK.Widgets.Comments("vk_comments", {limit: 15, width: $('#main-img > img').width(), attach: "*"});
+               	
+				});
+            </script>
+			
+		</div>
 		<div class="clear"></div>
 		<div class="recent-images">
 			<?php $wp_query->init();?>
